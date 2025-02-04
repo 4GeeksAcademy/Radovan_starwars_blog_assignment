@@ -5,18 +5,14 @@ import { Context } from "../store/appContext";
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const { theid } = useParams();
+	useEffect(() => {
+		actions.loadSinglePeople(theid)
+	}, [])
+
 	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
-
-			<hr className="my-4" />
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
+		<div className="container mt-3">
+			<h2>{store.person.name}</h2>
 		</div>
 	);
 };

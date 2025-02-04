@@ -1,0 +1,33 @@
+/* Estilos generales del botón corazón */
+.heart-button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid black;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para cuando el corazón está "relleno" (rojo) */
+.heart-button.liked {
+    background-color: red;
+}
+
+.heart-icon {
+    font-size: 20px;
+    color: black;
+    transition: color 0.3s;
+}
+
+.heart-button.liked .heart-icon {
+    color: white;
+}

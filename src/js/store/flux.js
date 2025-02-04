@@ -1,45 +1,56 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			people: [],
+			planets: [],
+			favorites: [], // Aquí almacenamos los favoritos
+			person: {},
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			loadPeople: () => {
+				fetch("https://swapi.dev/api/people")
+					.then(res => res.json())
+					.then(data => {
+						setStore({ people: data.results });
+					})
+					.catch(err => console.error("Error loading people:", err));
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+
+			loadSinglePeople: async (id) => {
+				try {
+					const response = await fetch(`https://swapi.dev/api/people/${id}`);
+					const data = await response.json();
+					setStore({ person: data });
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
 			},
-			changeColor: (index, color) => {
-				//get the store
+
+			loadPlanets: () => {
+				fetch("https://www.swapi.tech/api/planets")
+					.then(res => res.json())
+					.then(data => {
+						setStore({ planets: data.results });
+					})
+					.catch(err => console.error("Error loading planets:", err));
+			},
+
+			// Acción para agregar un elemento a favoritos
+			addToFavorites: (name, link) => {
 				const store = getStore();
+				const newFavorite = { name, link };
+				setStore({ favorites: [...store.favorites, newFavorite] });
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+			// Acción para eliminar un favorito
+			removeFromFavorites: (link) => {
+				const store = getStore();
+				setStore({
+					favorites: store.favorites.filter(fav => fav.link !== link),
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
+			},
+		},
 	};
 };
-
 export default getState;
