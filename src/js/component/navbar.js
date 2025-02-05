@@ -1,7 +1,8 @@
+// Navbar.js
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Dropdown } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa"; 
+import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -26,11 +27,14 @@ export const Navbar = () => {
                                 key={index}
                                 className="d-flex justify-content-between align-items-center"
                             >
-                                <Link to={fav.link} className="text-decoration-none">
-                                    {fav.name}
-                                </Link>
+                                <div>
+                                    {/* Usamos solo un div en lugar de Link aquí */}
+                                    <Link to={fav.link} className="text-decoration-none">
+                                        {fav.name}
+                                    </Link>
+                                </div>
                                 <FaTrash
-                                    onClick={() => removeFavorite(fav.link)} 
+                                    onClick={() => removeFavorite(fav.link)}
                                     style={{ cursor: "pointer", color: "red" }}
                                 />
                             </Dropdown.Item>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FaHeart } from "react-icons/fa"; // Importamos el ícono de corazón
+import { FaHeart } from "react-icons/fa"; // 
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../store/appContext";  // Importar el Context
+import { Context } from "../store/appContext";  
 
 const CardPlanet = (props) => {
     const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está lleno o no
@@ -26,16 +26,27 @@ const CardPlanet = (props) => {
         }
     };
 
-    const url = props.uid == 1 ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png" : "https://starwars-visualguide.com/assets/img/planets/" + props.uid + ".jpg";
+    // Obtener los detalles del planeta desde las props
+    const { name, population, climate, terrain, diameter, uid } = props;
+
+    const url = uid == 1 ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png" : "https://starwars-visualguide.com/assets/img/planets/" + uid + ".jpg";
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src={url} className="card-img-top" alt={props.name} />
+            <img src={url} className="card-img-top" alt={name} />
             <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">
+                    <strong>Population:</strong> {population}
+                    <br />
+                    <strong>Climate:</strong> {climate}
+                    <br />
+                    <strong>Terrain:</strong> {terrain}
+                    <br />
+                    <strong>Diameter:</strong> {diameter} km
+                </p>
                 <div className="d-flex justify-content-between align-items-center">
-                    <Link to={`/singlePlanet/${props.uid}`} className="btn btn-primary">Learn More</Link>
+                    <Link to={`/singlePlanet/${uid}`} className="btn btn-primary">Learn More</Link>
                     <button
                         className={`btn ${liked ? "btn-danger" : "btn-outline-danger"} heart-button`}
                         onClick={handleHeartClick}

@@ -36,6 +36,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error loading planets:", err));
 			},
 
+			loadSinglePlanet: async (id) => {
+				try {
+					const response = await fetch(`https://swapi.dev/api/planets/${id}`);
+					const data = await response.json();
+					setStore({ planet: data });
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
 			// Acción para agregar un elemento a favoritos
 			addToFavorites: (name, link) => {
 				const store = getStore();

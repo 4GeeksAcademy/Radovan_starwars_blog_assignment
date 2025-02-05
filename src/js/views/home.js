@@ -39,7 +39,14 @@ export const Home = () => {
 			<div className="d-flex overflow-auto p-2" style={{ maxWidth: "100%" }}>
 				{store.planets.map((item, index) => (
 					<div key={index} className="card-item me-3" style={{ width: "18rem" }}>
-						<CardPlanet name={item.name} uid={item.uid} />
+						<CardPlanet
+							name={item.name}
+							uid={item.uid}
+							population={item.population}
+							climate={item.climate}
+							terrain={item.terrain}
+							diameter={item.diameter}
+						/>
 					</div>
 				))}
 			</div>
