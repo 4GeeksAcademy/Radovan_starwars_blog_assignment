@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Card.css";  // Importar el archivo de estilos CSS
 import { FaHeart } from "react-icons/fa"; // Importamos el ícono de corazón
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../store/appContext"; // Importamos el Context
+import { Context } from "../store/appContext";  // Importar el Context
 
 const Card = (props) => {
     const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está lleno o no
     const { store, actions } = useContext(Context); // Obtener acceso al contexto de favoritos
 
+    // Verificamos si el personaje ya está en los favoritos al cargar el componente
     useEffect(() => {
-        // Verificamos si el elemento ya está en los favoritos
-        const isFavorite = store.favorites.some(fav => fav.link === `#${props.uid}`);
+        const isFavorite = store.favorites.some(fav => fav.link === `/single/${props.uid}`);
         setLiked(isFavorite);
     }, [store.favorites, props.uid]); // Ejecutar cuando los favoritos cambian
 
-    // Manejar clic en el corazón
     const handleHeartClick = () => {
-        setLiked(!liked);
-        if (!liked) {
-            // Solo agregar a favoritos si el corazón no está marcado
-            props.addFavorite(props.name, `#${props.uid}`);
+        if (liked) {
+            // Si ya está en favoritos, solo eliminamos
+            actions.removeFromFavorites(`/single/${props.uid}`);
+            setLiked(false); // Cambiar el estado del corazón a no "liked"
         } else {
-            // Eliminar de los favoritos si el corazón está marcado
-            props.removeFavorite(`#${props.uid}`);
+            // Si no está en favoritos, lo agregamos
+            actions.addToFavorites(props.name, `/single/${props.uid}`);
+            setLiked(true); // Cambiar el estado del corazón a "liked"
         }
     };
 
@@ -48,6 +48,7 @@ const Card = (props) => {
                     <button
                         className={`btn ${liked ? "btn-danger" : "btn-outline-danger"} heart-button`}
                         onClick={handleHeartClick}
+                        disabled={liked} // Deshabilitar el botón si ya está en favoritos
                     >
                         <FaHeart style={{ fontSize: "20px", color: liked ? "white" : "black" }} />
                     </button>
