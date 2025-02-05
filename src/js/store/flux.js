@@ -46,14 +46,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
-			// Acción para agregar un elemento a favoritos
+
 			addToFavorites: (name, link) => {
 				const store = getStore();
 				const newFavorite = { name, link };
 				setStore({ favorites: [...store.favorites, newFavorite] });
 			},
 
-			// Acción para eliminar un favorito
+
 			removeFromFavorites: (link) => {
 				const store = getStore();
 				setStore({

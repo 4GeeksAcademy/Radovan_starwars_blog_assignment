@@ -30,14 +30,14 @@ export const Single = (props) => {
                     />
                 </div>
 
-                {/* Propiedades debajo de la imagen */}
+                {/* Propiedades*/}
                 <div className="col-md-8">
                     <h2>{store.person.name}</h2>
                     <p>
                         <strong>Bio:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Curabitur pharetra ultricies metus, vel auctor augue vehicula at. Nunc efficitur dui non arcu fermentum, a tempus ipsum sodales. Mauris eget est at nunc suscipit posuere. Donec id nisl id erat fermentum condimentum. Nullam mollis felis sapien, vel tincidunt erat placerat sed.
                     </p>
 
-                    {/* Propiedades debajo de la imagen con texto más grande */}
+                    {/* Propiedades */}
                     <div className="d-flex justify-content-start flex-column">
                         <div className="m-2" style={{ fontSize: "2rem" }}>
                             <strong>Eye Color:</strong> {store.person.eye_color}
@@ -51,7 +51,7 @@ export const Single = (props) => {
                         <div className="m-2" style={{ fontSize: "2rem" }}>
                             <strong>Birth Year:</strong> {store.person.birth_year}
                         </div>
-                        {/* Puedes añadir más propiedades aquí */}
+
                     </div>
 
                     {/* Enlace para regresar a la lista de personajes */}

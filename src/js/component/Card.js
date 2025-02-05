@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/Card.css";  // Importar el archivo de estilos CSS
-import { FaHeart } from "react-icons/fa"; // Importamos el ícono de corazón
+import "../../styles/Card.css";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../store/appContext";  // Importar el Context
+import { Context } from "../store/appContext";
 
 const Card = (props) => {
-    const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está lleno o no
+    const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está liked o no
     const { store, actions } = useContext(Context); // Obtener acceso al contexto de favoritos
 
     // Verificamos si el personaje ya está en los favoritos al cargar el componente

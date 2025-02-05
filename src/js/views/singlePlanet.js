@@ -19,7 +19,7 @@ export const SinglePlanet = () => {
     return (
         <div className="container mt-5">
             <div className="row">
-                {/* Imagen del planeta a la izquierda */}
+                {/* Imagen del planeta */}
                 <div className="col-md-4">
                     <img
                         src={`https://starwars-visualguide.com/assets/img/planets/${theid}.jpg`} // Imagen del planeta
@@ -29,14 +29,14 @@ export const SinglePlanet = () => {
                     />
                 </div>
 
-                {/* Propiedades debajo de la imagen */}
+                {/* Propiedades  */}
                 <div className="col-md-8">
                     <h2>{store.planet.name}</h2>
                     <p>
                         <strong>Bio:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Curabitur pharetra ultricies metus, vel auctor augue vehicula at. Nunc efficitur dui non arcu fermentum, a tempus ipsum sodales. Mauris eget est at nunc suscipit posuere. Donec id nisl id erat fermentum condimentum. Nullam mollis felis sapien, vel tincidunt erat placerat sed.
                     </p>
 
-                    {/* Propiedades debajo de la imagen con texto más grande */}
+                    {/* Propiedades */}
                     <div className="d-flex justify-content-start flex-column">
                         <div className="m-2" style={{ fontSize: "2rem" }}>
                             <strong>Climate:</strong> {store.planet.climate}
@@ -50,7 +50,7 @@ export const SinglePlanet = () => {
                         <div className="m-2" style={{ fontSize: "2rem" }}>
                             <strong>Diameter:</strong> {store.planet.diameter}
                         </div>
-                        {/* Puedes añadir más propiedades aquí si lo deseas */}
+
                     </div>
 
                     {/* Enlace para regresar a la lista de planetas */}

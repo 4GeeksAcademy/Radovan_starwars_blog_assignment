@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";  
 
 const CardPlanet = (props) => {
-    const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está lleno o no
+    const [liked, setLiked] = useState(false); // Estado para manejar si el corazón está liked o no
     const { store, actions } = useContext(Context); // Obtener acceso al contexto de favoritos
 
     // Verificamos si el planeta ya está en los favoritos al cargar el componente

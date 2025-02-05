@@ -28,7 +28,7 @@ export const Navbar = () => {
                                 className="d-flex justify-content-between align-items-center"
                             >
                                 <div>
-                                    {/* Usamos solo un div en lugar de Link aquí */}
+                                    
                                     <Link to={fav.link} className="text-decoration-none">
                                         {fav.name}
                                     </Link>
